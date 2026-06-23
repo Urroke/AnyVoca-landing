@@ -1,0 +1,380 @@
+
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: var(--font-sans); }
+
+  .lp { width: 100%; overflow: hidden; }
+
+  .hero {
+    background: linear-gradient(135deg, #f0edff 0%, #fce8f3 50%, #ede8ff 100%);
+    padding: 64px 40px 80px;
+    text-align: center;
+    position: relative;
+  }
+  .hero-badge {
+    display: inline-block;
+    background: rgba(255,255,255,0.7);
+    border: 0.5px solid #c9b8f5;
+    border-radius: 20px;
+    padding: 4px 16px;
+    font-size: 13px;
+    color: #6b4fc8;
+    margin-bottom: 24px;
+    letter-spacing: 0.02em;
+  }
+  .hero h1 {
+    font-size: 52px;
+    font-weight: 500;
+    line-height: 1.1;
+    color: #1a1a2e;
+    margin-bottom: 12px;
+  }
+  .hero h1 span { color: #8b5cf6; }
+  .hero-sub {
+    font-size: 18px;
+    color: #6b7280;
+    margin-bottom: 40px;
+    max-width: 520px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.6;
+  }
+  .hero-buttons {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .btn-primary {
+    background: linear-gradient(135deg, #8b5cf6, #d946a8);
+    color: white;
+    border: none;
+    padding: 12px 28px;
+    border-radius: 12px;
+    font-size: 15px;
+    font-weight: 500;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+  }
+  .btn-secondary {
+    background: rgba(255,255,255,0.8);
+    color: #374151;
+    border: 0.5px solid #d1d5db;
+    padding: 12px 28px;
+    border-radius: 12px;
+    font-size: 15px;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+  }
+
+  .products {
+    padding: 80px 40px;
+    background: #fff;
+  }
+  .section-label {
+    text-align: center;
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    color: #9ca3af;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+  .section-title {
+    text-align: center;
+    font-size: 34px;
+    font-weight: 500;
+    color: #111827;
+    margin-bottom: 8px;
+    line-height: 1.2;
+  }
+  .section-sub {
+    text-align: center;
+    font-size: 16px;
+    color: #6b7280;
+    margin-bottom: 56px;
+    max-width: 480px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.6;
+  }
+
+  .product-cards {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .card-voca {
+    background: linear-gradient(145deg, #f5f0ff, #fce8f6);
+    border: 0.5px solid #e0d5f8;
+    border-radius: 20px;
+    padding: 36px 32px;
+    position: relative;
+    overflow: hidden;
+  }
+  .card-memo {
+    background: linear-gradient(145deg, #1a1a2e, #16213e);
+    border: 0.5px solid #2d2d4e;
+    border-radius: 20px;
+    padding: 36px 32px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .card-logo {
+    width: 52px;
+    height: 52px;
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 20px;
+  }
+  .logo-voca {
+    background: linear-gradient(135deg, #8b5cf6, #d946a8);
+    color: white;
+  }
+  .logo-memo {
+    background: linear-gradient(135deg, #374151, #111827);
+    color: #e5e7eb;
+    border: 0.5px solid #4b5563;
+  }
+
+  .card-name {
+    font-size: 22px;
+    font-weight: 500;
+    margin-bottom: 8px;
+  }
+  .name-voca { color: #4c1d95; }
+  .name-memo { color: #f3f4f6; }
+
+  .card-desc {
+    font-size: 14px;
+    line-height: 1.65;
+    margin-bottom: 24px;
+  }
+  .desc-voca { color: #6b4fc8; }
+  .desc-memo { color: #9ca3af; }
+
+  .card-features { list-style: none; margin-bottom: 28px; }
+  .card-features li {
+    font-size: 13px;
+    padding: 5px 0;
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+  }
+  .feat-voca { color: #5b21b6; }
+  .feat-memo { color: #d1d5db; }
+  .dot-voca { color: #a78bfa; margin-top: 2px; flex-shrink: 0; }
+  .dot-memo { color: #4b5563; margin-top: 2px; flex-shrink: 0; }
+
+  .card-tag {
+    display: inline-block;
+    padding: 4px 14px;
+    border-radius: 8px;
+    font-size: 12px;
+    font-weight: 500;
+  }
+  .tag-voca {
+    background: rgba(139,92,246,0.12);
+    color: #7c3aed;
+    border: 0.5px solid rgba(139,92,246,0.3);
+  }
+  .tag-memo {
+    background: rgba(255,255,255,0.05);
+    color: #6b7280;
+    border: 0.5px solid #374151;
+  }
+
+  .philosophy {
+    background: #f9fafb;
+    padding: 80px 40px;
+    text-align: center;
+  }
+  .pillars {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  .pillar {
+    background: white;
+    border: 0.5px solid #e5e7eb;
+    border-radius: 16px;
+    padding: 28px 20px;
+  }
+  .pillar-icon {
+    font-size: 28px;
+    margin-bottom: 12px;
+    display: block;
+  }
+  .pillar-title {
+    font-size: 15px;
+    font-weight: 500;
+    color: #111827;
+    margin-bottom: 6px;
+  }
+  .pillar-text {
+    font-size: 13px;
+    color: #6b7280;
+    line-height: 1.55;
+  }
+
+  .cta-section {
+    padding: 80px 40px;
+    text-align: center;
+    background: linear-gradient(135deg, #1a1a2e 0%, #2d1b69 100%);
+  }
+  .cta-section h2 {
+    font-size: 36px;
+    font-weight: 500;
+    color: white;
+    margin-bottom: 12px;
+  }
+  .cta-section p {
+    color: #a78bfa;
+    font-size: 16px;
+    margin-bottom: 36px;
+  }
+  .cta-buttons {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .btn-cta-primary {
+    background: linear-gradient(135deg, #8b5cf6, #d946a8);
+    color: white;
+    border: none;
+    padding: 13px 28px;
+    border-radius: 12px;
+    font-size: 15px;
+    font-weight: 500;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+  }
+  .btn-cta-secondary {
+    background: rgba(255,255,255,0.08);
+    color: #e5e7eb;
+    border: 0.5px solid rgba(255,255,255,0.2);
+    padding: 13px 28px;
+    border-radius: 12px;
+    font-size: 15px;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+  }
+
+  .footer {
+    padding: 24px 40px;
+    background: #111827;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  .footer-brand { font-size: 15px; font-weight: 500; color: #a78bfa; }
+  .footer-links { display: flex; gap: 20px; }
+  .footer-links a { font-size: 13px; color: #6b7280; text-decoration: none; }
+</style>
+
+<div class="lp">
+
+  <div class="hero">
+    <div class="hero-badge">✦ Next-generation learning tools</div>
+    <h1>Learn smarter.<br><span>Not harder.</span></h1>
+    <p class="hero-sub">We build AI products that adapt to you — not the other way around. Two tools, one mission: make learning actually stick.</p>
+    <div class="hero-buttons">
+      <a href="#" class="btn-primary">Explore our products</a>
+      <a href="#" class="btn-secondary">Read our story</a>
+    </div>
+  </div>
+
+  <div class="products">
+    <div class="section-label">Our products</div>
+    <h2 class="section-title">Two tools. One mission.</h2>
+    <p class="section-sub">Each product solves a different learning problem — both powered by adaptive AI that gets better the more you use it.</p>
+
+    <div class="product-cards">
+
+      <div class="card-voca">
+        <div class="card-logo logo-voca">Av</div>
+        <div class="card-name name-voca">AnyVoca</div>
+        <p class="card-desc desc-voca">Translate any word while browsing — AnyVoca silently builds your personal vocabulary list and schedules reviews automatically.</p>
+        <ul class="card-features">
+          <li><span class="dot-voca">▸</span><span class="feat-voca">Instant translation, any language pair</span></li>
+          <li><span class="dot-voca">▸</span><span class="feat-voca">Auto-saves words you look up</span></li>
+          <li><span class="dot-voca">▸</span><span class="feat-voca">Spaced repetition built in</span></li>
+          <li><span class="dot-voca">▸</span><span class="feat-voca">AI tutor explains grammar & nuance</span></li>
+        </ul>
+        <span class="card-tag tag-voca">Chrome Extension · Available now</span>
+      </div>
+
+      <div class="card-memo">
+        <div class="card-logo logo-memo">Am</div>
+        <div class="card-name name-memo">AnyMemo</div>
+        <p class="card-desc desc-memo">AI generates structured learning material on any topic — then adapts it based on your feedback until it's exactly right.</p>
+        <ul class="card-features">
+          <li><span class="dot-memo">▸</span><span class="feat-memo">AI-generated topics, not static textbooks</span></li>
+          <li><span class="dot-memo">▸</span><span class="feat-memo">You mark what's unclear or wrong</span></li>
+          <li><span class="dot-memo">▸</span><span class="feat-memo">Material rebuilds around your feedback</span></li>
+          <li><span class="dot-memo">▸</span><span class="feat-memo">No waiting for a book to be written</span></li>
+        </ul>
+        <span class="card-tag tag-memo">Coming soon</span>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="philosophy">
+    <div class="section-label">Our approach</div>
+    <h2 class="section-title">What makes us different</h2>
+    <p class="section-sub">We don't build courses. We build systems that learn what you don't know — and focus on exactly that.</p>
+    <div class="pillars">
+      <div class="pillar">
+        <span class="pillar-icon">⚡</span>
+        <div class="pillar-title">Passive by default</div>
+        <p class="pillar-text">Learning happens as a side effect of what you're already doing — no separate study sessions to remember.</p>
+      </div>
+      <div class="pillar">
+        <span class="pillar-icon">🧠</span>
+        <div class="pillar-title">Adapts to you</div>
+        <p class="pillar-text">The system tracks what you struggle with and rebuilds the curriculum — not the other way around.</p>
+      </div>
+      <div class="pillar">
+        <span class="pillar-icon">📡</span>
+        <div class="pillar-title">Always current</div>
+        <p class="pillar-text">No waiting years for a textbook. Material on any topic, generated and refined in real time.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="cta-section">
+    <h2>Start with AnyVoca</h2>
+    <p>Free Chrome extension. No account required to try.</p>
+    <div class="cta-buttons">
+      <a href="#" class="btn-cta-primary">Add to Chrome — it's free</a>
+      <a href="#" class="btn-cta-secondary">anyvoca.org →</a>
+    </div>
+  </div>
+
+  <div class="footer">
+    <span class="footer-brand">Any. ✦</span>
+    <div class="footer-links">
+      <a href="#">Privacy policy</a>
+      <a href="#">Contact</a>
+      <a href="#">anyvoca.org</a>
+    </div>
+  </div>
+
+</div>
